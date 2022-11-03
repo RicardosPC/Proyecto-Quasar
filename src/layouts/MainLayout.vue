@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh lpR fff">
-
+    <!--Encabezado-->
     <q-header elevated class="bg-primary text-white">
       <q-toolbar class="justify-between">
           <q-btn
@@ -28,17 +28,50 @@
             <q-icon v-else name="clear" class="cursor-pointer text-dark" @click="text = ''"/>
           </template>
         </q-input>
-
-        <q-btn class="bg-secondary text-primary" to="/ejemplo">Inicio</q-btn>
-        <div class="container-fluid">
-        <span class="material-icons md-36"> add_circle </span>
-        <span class="material-icons md-36">add_shopping_cart</span>
-      </div>
+        <!--Botones comprar y carrito-->
+        <q-btn class="bg-secondary text-primary gt-sm" to="/ejemplo">Inicio</q-btn>
+        <div class="gt-sm">
+          <span class="material-icons md-36"> add_circle </span>
+          <span class="material-icons md-36">add_shopping_cart</span>
+        </div>
       </q-toolbar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" side="left" behavior="mobile" bordered>
-      <!-- drawer content -->
+      <div class="q-pa-md" style="max-width: 350px">
+        <q-list>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-avatar>
+              <img src="../../public/icons/altoparlante.png" alt="parlante">
+            </q-avatar>
+            </q-item-section>
+            <q-item-section>CellPhone EBay</q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <span class="material-icons md-36" to="">home</span>
+            </q-item-section>
+            <q-item-section>Inicio</q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <span class="material-icons md-36">add_circle</span>
+            </q-item-section>
+            <q-item-section>Nuevo Anuncio</q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <span class="material-icons md-36">add_shopping_cart</span>
+            </q-item-section>
+            <q-item-section>Carrito</q-item-section>
+          </q-item>
+          <q-separator />
+        </q-list>
+      </div>
     </q-drawer>
 
     <q-page-container>
@@ -63,11 +96,16 @@ import { ref } from 'vue'
 export default {
   setup () {
     const leftDrawerOpen = ref(false)
+    const rightDrawerOpen = ref(false)
 
     return {
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
+      },
+      rightDrawerOpen,
+      toggleRightDrawer () {
+        rightDrawerOpen.value = !rightDrawerOpen.value
       }
     }
   }
