@@ -45,10 +45,11 @@
       <router-view />
     </q-page-container>
 
-    <q-footer elevated class="bg-grey-8 text-white">
+    <q-footer elevated class="bg-8 text-white" style="background-color:#5dc460;">
       <q-toolbar>
         <q-toolbar-title>
-          <div>Title</div>
+          <div>&copy; 2022 Judith Elizabeth Amaya Cano AC14027 / Ingeniería en sistemas Informáticos</div>
+          <div>&copy; 2022 Ricardo Edenilson Guevara Rivas GR12043 / Ingeniería en sistemas Informáticos</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
