@@ -12,22 +12,28 @@
           icon="menu"
           @click="toggleLeftDrawer"
           />
+          <!--Imagen mas titulo-->
         <div class="div">
           <q-toolbar-title class="gt-sm">
             <q-avatar>
-              <img src="../../public/icons/altoparlante.png">
+              <img src="../../public/icons/altoparlante.png" alt="parlante">
             </q-avatar>
             CellPhone Ebay
           </q-toolbar-title>
         </div>
-        <q-input dark dense standout v-model="text" input-class="text-right" class="q-ml-md">
+        <!--Buscador-->
+        <q-input dark dense standout v-model="text" input-class="text-right" class="q-ml-md col-5 bg-secondary">
           <template v-slot:append>
-            <q-icon v-if="text === ''" name="search" />
-            <q-icon v-else name="clear" class="cursor-pointer" @click="text = ''" />
+            <q-icon v-if="text === ''" name="search" class="text-dark"/>
+            <q-icon v-else name="clear" class="cursor-pointer text-dark" @click="text = ''"/>
           </template>
         </q-input>
 
-        <q-btn to="/ejemplo"/>
+        <q-btn class="bg-secondary text-primary" to="/ejemplo">Inicio</q-btn>
+        <div class="container-fluid">
+        <span class="material-icons md-36"> add_circle </span>
+        <span class="material-icons md-36">add_shopping_cart</span>
+      </div>
       </q-toolbar>
     </q-header>
 
