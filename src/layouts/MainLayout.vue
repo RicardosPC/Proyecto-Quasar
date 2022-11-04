@@ -13,7 +13,7 @@
           @click="toggleLeftDrawer"
           />
           <!--Imagen mas titulo-->
-        <div class="div">
+        <div>
           <q-toolbar-title class="gt-sm">
             <q-avatar>
               <img src="../../public/icons/altoparlante.png" alt="parlante">
@@ -29,10 +29,10 @@
           </template>
         </q-input>
         <!--Botones comprar y carrito-->
-        <q-btn class="bg-secondary text-primary gt-sm" to="/ejemplo">Inicio</q-btn>
+        <q-btn class="bg-secondary text-primary gt-sm" to="/indexpage">Inicio</q-btn>
         <div class="gt-sm">
-          <span class="material-icons md-36"> add_circle </span>
-          <span class="material-icons md-36">add_shopping_cart</span>
+          <q-btn to="/anuncio"><span class="material-icons md-36"> add_circle </span></q-btn>
+          <q-btn to="/anuncio"><span class="material-icons md-36">add_shopping_cart</span></q-btn>
         </div>
       </q-toolbar>
     </q-header>
@@ -51,14 +51,14 @@
           <q-separator />
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <span class="material-icons md-36" to="">home</span>
+              <span class="material-icons md-36" to="/indexpage">home</span>
             </q-item-section>
             <q-item-section>Inicio</q-item-section>
           </q-item>
           <q-separator />
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <span class="material-icons md-36">add_circle</span>
+              <span class="material-icons md-36" to="/anuncio">add_circle</span>
             </q-item-section>
             <q-item-section>Nuevo Anuncio</q-item-section>
           </q-item>
