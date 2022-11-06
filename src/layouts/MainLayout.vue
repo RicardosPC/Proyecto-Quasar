@@ -29,7 +29,7 @@
           </template>
         </q-input>
         <!--Botones comprar y carrito-->
-        <q-btn class="bg-secondary text-primary gt-sm" to="/indexpage">Inicio</q-btn>
+        <q-btn class="bg-secondary text-primary gt-sm" to="/">Inicio</q-btn>
         <div class="gt-sm">
           <q-btn to="/anuncio"><span class="material-icons md-36"> add_circle </span></q-btn>
           <q-btn to="/anuncio"><span class="material-icons md-36">add_shopping_cart</span></q-btn>
@@ -51,7 +51,7 @@
           <q-separator />
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <span class="material-icons md-36" to="/indexpage">home</span>
+              <span class="material-icons md-36" to="/">home</span>
             </q-item-section>
             <q-item-section>Inicio</q-item-section>
           </q-item>
