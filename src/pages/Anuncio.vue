@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="row">
+  <div class="row bg-primary q-pa-md">
     <div class="col-12 col-md-6">
-      <div class="row">
+      <div class="row bg-secondary">
         <!--Columna de datos del telefono-->
         <div class="col">
           <!--Selecciona estado-->
@@ -53,8 +53,9 @@
           </div>
         </div>
       </div>
+      <br>
       <!--Columna de fotos del telefono-->
-      <div class="row">
+      <div class="row bg-secondary q-pa-md">
             <div class="col q-pa-md">
               <span>Formulario de imagenes.</span>
               <form enctype="multipart/form-data">
@@ -73,7 +74,6 @@
 
 <script>
 import { ref } from 'vue'
-import {storage} from''
 
 export default {
   setup () {
@@ -83,15 +83,6 @@ export default {
       options: [
         'Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'
       ]
-    }
-  },
-  data() {
-    return{
-      imagenes:[],
-      imagen:null
-    },
-    methods:{
-
     }
   }
 }
