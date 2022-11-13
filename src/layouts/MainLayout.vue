@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fff">
     <!--Encabezado-->
-    <q-header elevated class="bg-primary text-white">
+    <q-header class="bg-primary text-white">
       <q-toolbar class="justify-between">
           <q-btn
           class="lt-md"
@@ -16,13 +16,13 @@
         <div>
           <q-toolbar-title class="gt-sm">
             <q-avatar>
-              <img src="../../public/icons/altoparlante.png" alt="parlante">
+              <img src="/icons/altoparlante.png" alt="parlante">
             </q-avatar>
-            CellPhone Ebay
+            <b>CellPhone Ebay</b>
           </q-toolbar-title>
         </div>
         <!--Buscador-->
-        <q-input dark dense standout v-model="text" input-class="text-right" class="q-ml-md col-5 bg-secondary">
+        <q-input dark dense standout v-model="text" input-class="text-right" class="q-ml-md col-5 bg-secondary" placeholder="¿Qué estás buscando?">
           <template v-slot:append>
             <q-icon v-if="text === ''" name="search" class="text-dark"/>
             <q-icon v-else name="clear" class="cursor-pointer text-dark" @click="text = ''"/>
@@ -43,7 +43,7 @@
           <q-item clickable v-ripple>
             <q-item-section avatar>
               <q-avatar>
-              <img src="../../public/icons/altoparlante.png" alt="parlante">
+              <img src="/icons/altoparlante.png" alt="parlante">
             </q-avatar>
             </q-item-section>
             <q-item-section>CellPhone EBay</q-item-section>
@@ -78,11 +78,11 @@
       <router-view />
     </q-page-container>
 
-    <q-footer elevated class="bg-8 text-white" style="background-color:#5dc460;">
-      <q-toolbar>
+    <q-footer class="bg-8 text-white" style="background-color:#5dc460;">
+      <q-toolbar class="my-footer">
         <q-toolbar-title>
-          <div>&copy; 2022 Judith Elizabeth Amaya Cano AC14027 / Ingeniería en sistemas Informáticos</div>
-          <div>&copy; 2022 Ricardo Edenilson Guevara Rivas GR12043 / Ingeniería en sistemas Informáticos</div>
+          <div class="text-caption text-bold">&copy; 2022 Judith Elizabeth Amaya Cano AC14027 / Ingeniería en sistemas Informáticos</div>
+          <div class="text-caption text-bold">&copy; 2022 Ricardo Edenilson Guevara Rivas GR12043 / Ingeniería en sistemas Informáticos</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
@@ -111,3 +111,32 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.my-footer {
+    text-align: center;
+    padding: 10px;
+    color: #6b6a6bec;
+    font-family:  Verdana;
+    border: black solid;
+}
+
+.q-btn {
+    color:fff;
+    background: #ebe1e6cc;
+    border-color:fff;
+    font-family:  Verdana;
+    border: outset;
+    cursor: pointer;
+    border-radius: 10px;
+    cursor: url(icons/puntero.png), auto;
+    margin: 3px;
+}
+
+.q-header {
+    text-align: center;
+    padding: 5px;
+    color: #6b6a6bec;
+    font-family:  Verdana;
+    border: black solid;
+}
+</style>
