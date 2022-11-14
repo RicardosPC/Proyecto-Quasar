@@ -93,6 +93,25 @@
         </div>
       </div>
       <div class="col content-center">
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6 bg-secondary">
+              <fieldset class="bg-secondary">
+                <legend class="bg-secondary">Precio: </legend>
+                <div class="container">
+                  <q-input square v-model="text" filled autogrow />
+                </div>
+              </fieldset>
+          </div>
+          <div class="col-3"></div>
+        </div>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6">
+            <q-btn to="/anuncio"><span class="material-icons md-36"> add_circlex </span></q-btn>
+          </div>
+          <div class="col-3"></div>
+        </div>
         <div>
         </div>
       </div>
