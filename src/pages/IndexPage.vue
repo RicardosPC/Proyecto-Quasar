@@ -140,7 +140,7 @@
                 <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
               </q-card-section>
               <q-card-actions vertical>
-                <q-btn flat class="my-btn text-white">Detalles</q-btn>
+                <q-btn flat class="my-btn text-white" to="/vista">Detalles</q-btn>
               </q-card-actions>
             </q-card>
           </div>
@@ -154,7 +154,7 @@
                 <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
               </q-card-section>
               <q-card-actions vertical>
-                <q-btn flat class="my-btn text-white">Detalles</q-btn>
+                <q-btn flat class="my-btn text-white" to="/vista">Detalles</q-btn>
               </q-card-actions>
             </q-card>
           </div>
@@ -168,7 +168,7 @@
                 <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
               </q-card-section>
               <q-card-actions vertical>
-                <q-btn flat class="my-btn text-white">Detalles</q-btn>
+                <q-btn flat class="my-btn text-white" to="/vista">Detalles</q-btn>
               </q-card-actions>
             </q-card>
           </div>
@@ -182,7 +182,7 @@
                 <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
               </q-card-section>
               <q-card-actions vertical>
-                <q-btn flat class="my-btn text-white">Detalles</q-btn>
+                <q-btn flat class="my-btn text-white" to="/vista">Detalles</q-btn>
               </q-card-actions>
             </q-card>
           </div>
@@ -198,7 +198,7 @@
                 <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
               </q-card-section>
               <q-card-actions vertical>
-                <q-btn flat class="my-btn text-white">Detalles</q-btn>
+                <q-btn flat class="my-btn text-white" to="/vista">Detalles</q-btn>
               </q-card-actions>
             </q-card>
           </div>
@@ -212,7 +212,7 @@
                 <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
               </q-card-section>
               <q-card-actions vertical>
-                <q-btn flat class="my-btn text-white">Detalles</q-btn>
+                <q-btn flat class="my-btn text-white" to="/vista">Detalles</q-btn>
               </q-card-actions>
             </q-card>
           </div>
@@ -226,7 +226,7 @@
                 <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
               </q-card-section>
               <q-card-actions vertical>
-                <q-btn flat class="my-btn text-white">Detalles</q-btn>
+                <q-btn flat class="my-btn text-white" to="/vista">Detalles</q-btn>
               </q-card-actions>
             </q-card>
           </div>
@@ -240,7 +240,7 @@
                 <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
               </q-card-section>
               <q-card-actions vertical>
-                <q-btn flat class="my-btn text-white">Detalles</q-btn>
+                <q-btn flat class="my-btn text-white" to="/vista">Detalles</q-btn>
               </q-card-actions>
             </q-card>
           </div>
