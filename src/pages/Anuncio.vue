@@ -1,53 +1,56 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="row bg-primary q-pa-md">
+  <div class="row bg-accent q-pa-md" style="opacity: ;">
     <div class="col-12 col-md-6">
       <div class="row bg-secondary">
         <!--Columna de datos del telefono-->
         <div class="col">
           <!--Selecciona estado-->
           <div class="q-pa-md">
-              <span>Estado: </span>
-              <q-radio v-model="shape" val="usado" label="Usado" />
-              <q-radio v-model="shape" val="nuevo" label="Nuevo" />
-            <div class="q-px-sm">
-              Has seleccionado la opcion: <strong>{{ shape }}</strong>
+            <div class="row">
+              <div class="col-3 self-center">
+                <span><b>Estado: </b> </span>
+              </div>
+              <div class="col">
+                <q-radio v-model="shape" val="usado" label="Usado" />
+                <q-radio v-model="shape" val="nuevo" label="Nuevo" />
+              </div>
             </div>
             <br>
             <!--Introduce marca-->
             <div class="row">
-              <div class="col-3 self-center">Marca:</div>
+              <div class="col-3 self-center"><b>Marca:</b></div>
               <q-input filled square v-model="marca"/>
             </div>
             <br>
             <!--Introduce modelo-->
             <div class="row">
-              <div class="col-3 self-center">Modelo:</div>
+              <div class="col-3 self-center"><b>Modelo: </b></div>
               <q-input filled square v-model="modelo" />
             </div>
             <br>
             <!--Introduce pantalla-->
             <div class="row">
-              <div class="col-3 self-center">Pantalla:</div>
+              <div class="col-3 self-center"><b>Pantalla: </b></div>
               <q-input filled square v-model="pantalla" />
             </div>
             <br>
             <!--Introduce Sistema-->
             <div class="row">
-              <div class="col-3 self-center">Sistema:</div>
+              <div class="col-3 self-center"><b>Sistema: </b></div>
               <q-select filled square v-model="model" :options="options" label="Filled" class="col-4"/>
             </div>
             <br>
             <!--Introduce Rom-->
             <div class="row">
-              <div class="col-3 self-center">Rom:</div>
+              <div class="col-3 self-center"><b>Rom: </b></div>
               <q-input filled square v-model="rom" />
               <div class="col self-center text-center gt-sm">Almacenamiento Interino</div>
             </div>
             <br>
             <!--Introduce RAM-->
             <div class="row">
-              <div class="col-3 self-center">RAM:</div>
+              <div class="col-3 self-center"><b>RAM: </b></div>
               <q-input filled square v-model="ram" />
             </div>
           </div>
@@ -67,7 +70,32 @@
     </div>
     <!--Columna de Especificaciones del telefono-->
     <div class="col-12 col-md-6">
-      algo
+      <div class="row q-pa-md">
+        <div class="col">
+          <b>Titulo breve del anuncio:</b>
+          <q-input filled square v-model="titulo" />
+        </div>
+      </div>
+      <div class="row q-pa-md">
+        <div class="col-3 self-center"><b>Vendedor: </b></div>
+        <q-input filled square v-model="vendedor" />
+      </div>
+      <div class="row q-pa-md">
+        <div class="col-3 self-center"><b>Telefono: </b></div>
+        <q-input filled square v-model="telefono" />
+      </div>
+      <div class="row q-pa-md">
+        <div class="col">
+          <b>Descripcion:</b>
+          <div class="q-pa-md">
+            <q-input square v-model="text" filled autogrow />
+          </div>
+        </div>
+      </div>
+      <div class="col content-center">
+        <div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -81,7 +109,7 @@ export default {
       shape: ref('Ninguna'),
       model: ref(null),
       options: [
-        'Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'
+        'IOS', 'Android', 'Win. Movile', 'Otro', 'y otro'
       ]
     }
   }
