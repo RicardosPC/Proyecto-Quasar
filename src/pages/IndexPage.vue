@@ -3,7 +3,7 @@
     <!--filtro nuevo-->
     <div class="row">
       <div class="col-2">
-        <q-scroll-area style="height: 550px; max-width: 200;">
+        <q-scroll-area style="height: 500px; max-width: 200;">
           <div class="row"></div>
           <div class="row">
           <q-toggle
