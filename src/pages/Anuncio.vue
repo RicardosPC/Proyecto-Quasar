@@ -1,72 +1,76 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="row bg-accent q-pa-md" style="opacity: ;">
+  <div class="row bg-accent q-pa-md">
     <div class="col-12 col-md-6">
-      <div class="row bg-secondary">
-        <!--Columna de datos del telefono-->
-        <div class="col">
-          <!--Selecciona estado-->
-          <div class="q-pa-md">
-            <div class="row">
-              <div class="col-3 self-center">
-                <span><b>Estado: </b> </span>
+      <fieldset>
+        <div class="row bg-secondary">
+          <!--Columna de datos del telefono-->
+          <div class="col">
+            <!--Selecciona estado-->
+            <div class="q-pa-md">
+              <div class="row">
+                <div class="col-3 self-center">
+                  <span><b>Estado: </b> </span>
+                </div>
+                <div class="col">
+                  <q-radio v-model="shape" val="usado" label="Usado" />
+                  <q-radio v-model="shape" val="nuevo" label="Nuevo" />
+                </div>
               </div>
-              <div class="col">
-                <q-radio v-model="shape" val="usado" label="Usado" />
-                <q-radio v-model="shape" val="nuevo" label="Nuevo" />
+              <br>
+              <!--Introduce marca-->
+              <div class="row">
+                <div class="col-3 self-center"><b>Marca:</b></div>
+                <q-input filled square v-model="marca"/>
               </div>
-            </div>
-            <br>
-            <!--Introduce marca-->
-            <div class="row">
-              <div class="col-3 self-center"><b>Marca:</b></div>
-              <q-input filled square v-model="marca"/>
-            </div>
-            <br>
-            <!--Introduce modelo-->
-            <div class="row">
-              <div class="col-3 self-center"><b>Modelo: </b></div>
-              <q-input filled square v-model="modelo" />
-            </div>
-            <br>
-            <!--Introduce pantalla-->
-            <div class="row">
-              <div class="col-3 self-center"><b>Pantalla: </b></div>
-              <q-input filled square v-model="pantalla" />
-            </div>
-            <br>
-            <!--Introduce Sistema-->
-            <div class="row">
-              <div class="col-3 self-center"><b>Sistema: </b></div>
-              <q-select filled square v-model="model" :options="options" label="Filled" class="col-4"/>
-            </div>
-            <br>
-            <!--Introduce Rom-->
-            <div class="row">
-              <div class="col-3 self-center"><b>Rom: </b></div>
-              <q-input filled square v-model="rom" />
-              <div class="col self-center text-center gt-sm">Almacenamiento Interino</div>
-            </div>
-            <br>
-            <!--Introduce RAM-->
-            <div class="row">
-              <div class="col-3 self-center"><b>RAM: </b></div>
-              <q-input filled square v-model="ram" />
+              <br>
+              <!--Introduce modelo-->
+              <div class="row">
+                <div class="col-3 self-center"><b>Modelo: </b></div>
+                <q-input filled square v-model="modelo" />
+              </div>
+              <br>
+              <!--Introduce pantalla-->
+              <div class="row">
+                <div class="col-3 self-center"><b>Pantalla: </b></div>
+                <q-input filled square v-model="pantalla" />
+              </div>
+              <br>
+              <!--Introduce Sistema-->
+              <div class="row">
+                <div class="col-3 self-center"><b>Sistema: </b></div>
+                <q-select filled square v-model="model" :options="options" label="Filled" class="col-4"/>
+              </div>
+              <br>
+              <!--Introduce Rom-->
+              <div class="row">
+                <div class="col-3 self-center"><b>Rom: </b></div>
+                <q-input filled square v-model="rom" />
+                <div class="col self-center text-center gt-sm">Almacenamiento Interino</div>
+              </div>
+              <br>
+              <!--Introduce RAM-->
+              <div class="row">
+                <div class="col-3 self-center"><b>RAM: </b></div>
+                <q-input filled square v-model="ram" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
       <br>
       <!--Columna de fotos del telefono-->
-      <div class="row bg-secondary q-pa-md">
-            <div class="col q-pa-md">
-              <span>Formulario de imagenes.</span>
-              <form enctype="multipart/form-data">
-                <input type="file" accept="image/*">
-                <input type="submit" value="Subir Imagen">
-              </form>
-            </div>
+      <fieldset>
+        <div class="row bg-secondary q-pa-md">
+          <div class="col q-pa-md">
+            <span>Formulario de imagenes.</span>
+            <form enctype="multipart/form-data">
+              <input type="file" accept="image/*">
+              <input type="submit" value="Subir Imagen"/>
+            </form>
+          </div>
         </div>
+      </fieldset>
     </div>
     <!--Columna de Especificaciones del telefono-->
     <div class="col-12 col-md-6">
@@ -105,10 +109,12 @@
           </div>
           <div class="col-3"></div>
         </div>
+        <br>
         <div class="row">
           <div class="col-3"></div>
           <div class="col-6">
-            <q-btn to="/anuncio"><span class="material-icons md-36"> add_circlex </span></q-btn>
+            <q-btn><span class="material-icons md-36"> cancel </span><legend>Cancelar</legend></q-btn>
+            <q-btn><span class="material-icons md-36"> save </span><legend>Guardar</legend></q-btn>
           </div>
           <div class="col-3"></div>
         </div>
