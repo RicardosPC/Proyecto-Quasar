@@ -8,4 +8,4 @@ import { getFirestore } from 'firebase/firestore'
 // something to do
 // })
 
-export default { initializeApp, getFirestore }
+export default { initializeApp, getFirestore, boot }
