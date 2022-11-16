@@ -2,7 +2,7 @@
   <q-page>
     <!--filtro nuevo-->
     <div class="row">
-      <div class="col-2">
+      <div class="col-2 gt-sm">
         <q-scroll-area style="height: 500px; max-width: 200;">
           <div class="row"></div>
           <div class="row">
@@ -179,7 +179,7 @@
           <!---->
           <div class="col-6 col-md-2">
             <q-card class="my-producto">
-              <img src="Images/samsung a22 5g/samsung.jpg">
+              <img  src="Images/samsung a22 5g/samsung.jpg">
               <q-separator black/>
               <q-card-section>
                 <div class="text-h6 text-bold">$209.00</div>
