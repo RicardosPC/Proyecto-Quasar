@@ -266,7 +266,7 @@ export default {
 .my-card {
     font-family:  Verdana;
     border: outset;
-    margin: 15px;
+    margin: 16px;
     color: #6b6a6bec;
     width: 100%;
     max-width: 125px;
