@@ -241,6 +241,15 @@
 
 <script>
 import { ref } from 'vue'
+import { db } from '../boot/database'
+
+const cargarDatos = function () {
+  db.collection('Productos').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()}`)
+    })
+  })
+}
 
 export default {
   setup () {
@@ -257,7 +266,8 @@ export default {
       pantalla1: ref(true),
       pantalla2: ref(true),
       pantalla3: ref(true),
-      paginacion: ref(true)
+      paginacion: ref(true),
+      cargarDatos
     }
   }
 }
@@ -266,7 +276,7 @@ export default {
 .my-card {
     font-family:  Verdana;
     border: outset;
-    margin: 16px;
+    margin: 15px;
     color: #6b6a6bec;
     width: 100%;
     max-width: 125px;
