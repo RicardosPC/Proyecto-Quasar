@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <!--filtro nuevo-->
+    <!--filtro nuevo marcas sistema pantalla-->
     <div class="row">
       <div class="col-2 gt-sm">
         <q-scroll-area style="height: 500px; max-width: 200;">
@@ -128,10 +128,33 @@
         </q-scroll-area>
       </div>
       <div class="col-10">
+        <div class="row">
+          <div class="col"></div>
+          <div class="col content-center">
+            <div class="col">
+              <div>
+                <q-btn-toggle
+                  v-model="ordenarPor"
+                  class="my-custom-toggle"
+                  no-caps
+                  rounded
+                  unelevated
+                  toggle-color="primary"
+                  color="white"
+                  text-color="primary"
+                  :options="opcionesOrdenar"
+                />
+              </div>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+          </div>
+          <div class="col"></div>
+        </div>
        <!--cartas con los articulos-->
         <div class="row">
           <!---->
-          <div class="col-6 col-md-2">
+          <div class="col-6 col-md-3">
             <q-card class="my-producto">
               <img src="Images/samsung a22 5g/samsung.jpg">
               <q-separator black/>
@@ -141,87 +164,6 @@
               </q-card-section>
             </q-card>
           </div>
-          <!---->
-          <div class="col-6 col-md-2">
-            <q-card class="my-producto">
-              <img src="Images/samsung a22 5g/samsung.jpg">
-              <q-separator black/>
-              <q-card-section>
-                <div class="text-h6 text-bold">$209.00</div>
-                <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
-              </q-card-section>
-            </q-card>
-          </div>
-          <!---->
-          <div class="col-6 col-md-2">
-            <q-card class="my-producto">
-              <img src="Images/samsung a22 5g/samsung.jpg">
-              <q-separator black/>
-              <q-card-section>
-                <div class="text-h6 text-bold">$209.00</div>
-                <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
-              </q-card-section>
-            </q-card>
-          </div>
-          <!---->
-          <div class="col-6 col-md-2">
-            <q-card class="my-producto">
-              <img src="Images/samsung a22 5g/samsung.jpg">
-              <q-separator black/>
-              <q-card-section>
-                <div class="text-h6 text-bold">$209.00</div>
-                <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
-              </q-card-section>
-            </q-card>
-          </div>
-          <!---->
-          <div class="row">
-          <!---->
-          <div class="col-6 col-md-2">
-            <q-card class="my-producto">
-              <img  src="Images/samsung a22 5g/samsung.jpg">
-              <q-separator black/>
-              <q-card-section>
-                <div class="text-h6 text-bold">$209.00</div>
-                <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
-              </q-card-section>
-            </q-card>
-          </div>
-          <!---->
-          <div class="col-6 col-md-2">
-            <q-card class="my-producto">
-              <img src="Images/samsung a22 5g/samsung.jpg">
-              <q-separator black/>
-              <q-card-section>
-                <div class="text-h6 text-bold">$209.00</div>
-                <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
-              </q-card-section>
-            </q-card>
-          </div>
-          <!---->
-          <div class="col-6 col-md-2">
-            <q-card class="my-producto">
-              <img src="Images/samsung a22 5g/samsung.jpg">
-              <q-separator black/>
-              <q-card-section>
-                <div class="text-h6 text-bold">$209.00</div>
-                <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
-              </q-card-section>
-            </q-card>
-          </div>
-          <!---->
-          <div class="col-6 col-md-2">
-            <q-card class="my-producto">
-              <img src="Images/samsung a22 5g/samsung.jpg">
-              <q-separator black/>
-              <q-card-section>
-                <div class="text-h6 text-bold">$209.00</div>
-                <div class="text-caption">Samsung A22 5G, Infinity-V de 6.6", 128GB, 4GB Ram</div>
-              </q-card-section>
-            </q-card>
-          </div>
-          <!---->
-        </div>
         </div>
       </div>
     </div>
@@ -242,7 +184,8 @@
 <script>
 import { ref } from 'vue'
 import { db } from '../boot/database'
-
+const ordenarPor = ref('Precio')
+const opcionesOrdenar = ref([{ label: 'Precio', value: 'Precio' }, { label: 'Fecha', value: 'Fecha' }])
 const cargarDatos = function () {
   db.collection('Productos').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -267,7 +210,9 @@ export default {
       pantalla2: ref(true),
       pantalla3: ref(true),
       paginacion: ref(true),
-      cargarDatos
+      cargarDatos,
+      ordenarPor,
+      opcionesOrdenar
     }
   }
 }

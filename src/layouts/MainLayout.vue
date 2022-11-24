@@ -76,6 +76,7 @@
 
     <q-page-container>
       <router-view />
+
     </q-page-container>
 
     <q-footer class="bg-8 text-white" style="background-color:#5dc460;">
@@ -86,7 +87,6 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
-
   </q-layout>
 </template>
 

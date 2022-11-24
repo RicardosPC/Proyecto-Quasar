@@ -170,7 +170,7 @@ export default {
           color: 'primary',
           icon: 'save'
         })
-        router.push('/home')
+        router.push('/')
       }
     }
     function obtenerURL () {
