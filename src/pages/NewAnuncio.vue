@@ -170,7 +170,7 @@ export default {
           color: 'primary',
           icon: 'save'
         })
-        router.push('.//IndexPage.vue')
+        router.push('/home')
       }
     }
     function obtenerURL () {
