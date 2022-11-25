@@ -169,9 +169,9 @@
        <!--cartas con los articulos-->
         <div class="row">
           <!---->
-          <div class="col"  v-for="(item,key) in articulos" :key="key">
+          <v-col lg="3"  v-for="(item,key) in articulos" :key="key">
             <q-card class="my-card q-pa-xs">
-              <img :src="item.urlImagen">
+              <img :src="item.urlImagen" class="my-img">
               <q-separator black/>
               <q-card-section>
                 <div class="text-h6 text-center">${{item.precio}}</div>
@@ -183,17 +183,17 @@
                 </q-card-actions>
               </q-card-section>
             </q-card>
-          </div>
+          </v-col>
         </div>
         <q-dialog v-model="fullHeight" full-height>
-          <q-card class="column full-height" style="width: 200px"   v-for="(item,key) in articulos" :key="key">
+          <q-card class="column full-height"  style="width: 200px">
             <q-card-section>
               <img :src="item.urlImagen">
               <div class="text-h6 text-center">${{item.precio}}</div>
               <div class="text-subtitle2">{{item.titulo}}</div>
               <div class="text-h6 text-center">${{item.descripcion}}</div>
             </q-card-section>
-            <q-card-actions align="right" class="bg-white text-teal">
+            <q-card-actions align="center" class="bg-white text-teal">
               <q-btn flat label="OK" v-close-popup />
             </q-card-actions>
           </q-card>
@@ -342,7 +342,15 @@ console.log(hayFiltro.value)
     margin: 15px;
     color: #6b6a6bec;
     width: 100%;
-    max-width: 125px;
+    max-width: 200px;
+    height: 100%;
+    max-height: 400px;
+}
+.my-img {
+    width: 100%;
+    max-width: 75px;
+    height: 100%;
+    max-height: 200px;
 }
 .my-producto {
     font-family:  Verdana;
