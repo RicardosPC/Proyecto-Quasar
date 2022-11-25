@@ -152,9 +152,13 @@
               </template>
             </q-input>
           </div>
-          <div class="col-1 self-center"><q-btn class="gt-sm" @click="filtrarPrecio" round color="primary" icon="search" /></div>
+          <div class="col-1 self-center">
+            <q-btn class="gt-sm" @click="filtrarPrecio" round color="primary" icon="search" />
+          </div>
           <div class="col-2 self-center">
             <q-btn class="gt-sm" round @click="cargarDatosOriginales" v-show="hayFiltrosP" color="primary" icon="close" />
+            <q-select dense class="col-4 lt-md" v-model="ordenarpor" :options="opcionesOrdenar" outlined label="Ordenar por:"
+              @update:model-value="cambioSelectOrdenar" />
             <div class="col-5 mobile-hide gt-sm">
               <!-- Ordenar Por: -->
               <q-btn-toggle v-model="ordenarpor" class="my-custom-toggle mobile-hide" no-caps roundedunelevated toggle-color="primary" color="white" text-color="primary" :options="opcionesOrdenar" @click="ordenar"/>
@@ -165,7 +169,7 @@
        <!--cartas con los articulos-->
         <div class="row">
           <!---->
-          <div class="col-6 col-md-3">
+          <div class="col">
             <q-card class="my-card q-pa-xs" v-for="(item,key) in articulos" :key="key">
               <img :src="item.urlImagen">
               <q-separator black/>
@@ -216,150 +220,119 @@ import { db } from 'boot/database'
 import { ref, onMounted, computed } from 'vue'
 import { getStorage, ref as refStorage, listAll, getDownloadURL } from 'firebase/storage'
 
-const ordenarPor = ref('Precio')
-const opcionesOrdenar = ref([{ label: 'Precio', value: 'Precio' }, { label: 'Fecha', value: 'Fecha' }])
 const desde = ref(0)
 const hasta = ref(0)
 const hayFiltrosP = ref(false)
 const contaCargarFoto = ref(0)
 const fullHeight = ref(false)
-/* const cargarDatos = function () {
-  db.collection('Productos').get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`)
-    })
-  })
-} */
-
-/* db, */
-/* estado: ref(true),
-samsung: ref(true),
-huawei: ref(true),
-nokia: ref(true),
-iPhone: ref(true),
-xiaomi: ref(true),
-android: ref(true),
-windows: ref(true),
-ios: ref(true),
-pantalla1: ref(true),
-pantalla2: ref(true),
-pantalla3: ref(true),
-paginacion: ref(true), */
-/* cargarDatos, */
-/* ordenarPor,
-opcionesOrdenar */
-
-const storage = getStorage();
-const ordenarpor=ref('PRECIO')
-const opcionesOrdenar=ref([
-  {label: 'PRECIO', value:'PRECIO'},
-  {label:'FECHA', value:'FECHA'}])
-let articuloriginal= ref([
-  {id:'12234', precio:132, titulo:'Iphone 6 pantalla de 8 pulgadas, 64Gb internos 2Gb de Ram, Sólo Banda Tigo, Nuevo', vendedor:'Juan Perez', telefono:7613-1106, fecha:'2022-10-05'},
-  {id:'122345', precio:125, titulo:'Iphone 7 pantalla de 8 pulgadas, 64Gb internos 2Gb de Ram, Sólo Banda Tigo, Nuevo', vendedor:'Juan Perez', telefono:7613-1106, fecha:'2022-09-05'},
-  {id:'122346', precio:100, titulo:'Iphone 8 pantalla de 8 pulgadas, 64Gb internos 2Gb de Ram, Sólo Banda Tigo, Nuevo', vendedor:'Juan Perez', telefono:7613-1106, fecha:'2022-07-05'},
-  {id:'12234', precio:141, titulo:'Iphone 4 pantalla de 8 pulgadas, 64Gb internos 2Gb de Ram, Sólo Banda Tigo, Nuevo',vendedor:'Juan Perez', telefono:7613-1106, fecha:'2022-04-05'}
-  ])
-const articulos=ref([])
-//Computed
-const hayFiltro=computed(()=>{
-  if(desde.value>0 && hasta.value>0){
+const storage = getStorage()
+const ordenarpor = ref('PRECIO')
+const opcionesOrdenar = ref([{ label: 'PRECIO', value: 'PRECIO' }, { label: 'FECHA', value: 'FECHA' }])
+const articuloriginal = ref([
+  { id: '12234', precio: 132, titulo: 'Iphone 6 pantalla de 8 pulgadas, 64Gb internos 2Gb de Ram, Sólo Banda Tigo, Nuevo', vendedor: 'Juan Perez', telefono: 7613 - 1106, fecha: '2022-10-05' },
+  { id: '122345', precio: 125, titulo: 'Iphone 7 pantalla de 8 pulgadas, 64Gb internos 2Gb de Ram, Sólo Banda Tigo, Nuevo', vendedor: 'Juan Perez', telefono: 7613 - 1106, fecha: '2022-09-05' },
+  { id: '122346', precio: 100, titulo: 'Iphone 8 pantalla de 8 pulgadas, 64Gb internos 2Gb de Ram, Sólo Banda Tigo, Nuevo', vendedor: 'Juan Perez', telefono: 7613 - 1106, fecha: '2022-07-05' },
+  { id: '12234', precio: 141, titulo: 'Iphone 4 pantalla de 8 pulgadas, 64Gb internos 2Gb de Ram, Sólo Banda Tigo, Nuevo', vendedor: 'Juan Perez', telefono: 7613 - 1106, fecha: '2022-04-05' }
+])
+const articulos = ref([])
+// Computed
+const hayFiltro = computed(() => {
+  if (desde.value > 0 && hasta.value > 0) {
     return true
-  }else{
+  } else {
     return false
   }
 })
-//observadores
+// observadores
 
-//Metodos
+// Metodos
 
-
-async function cargarDatosOriginales(){
-  hayFiltrosP.value=false
+async function cargarDatosOriginales () {
+  hayFiltrosP.value = false
   articulos.value = []
-  articuloriginal.value=[]
-  const querySnapshot = await getDocs(collection(db, "articulos"));
+  articuloriginal.value = []
+  const querySnapshot = await getDocs(collection(db, 'articulos'))
   querySnapshot.forEach((doc) => {
-    let tupla = doc.data()
-    tupla.id=doc.id
+    const tupla = doc.data()
+    tupla.id = doc.id
     articuloriginal.value.push(tupla)
-    //console.log(`${doc.id} => ${doc.data()}`);
-  });
+    // console.log(`${doc.id} => ${doc.data()}`);
+  })
   cargarImagenes()
-  }
-function cargarImagenes(){
+}
+function cargarImagenes () {
   console.log('cargar imagenes')
-  articuloriginal.value.forEach((arti)=>{
-  console.log(arti.id)
-  const listRef = refStorage(storage, arti.id);
-  // Find all the prefixes and items.
-  listAll(listRef).then((res) => {
-    if(res.items.length>0){
-      getDownloadURL(refStorage(storage, res.items[0].fullPath)).then((url) => {
+  articuloriginal.value.forEach((arti) => {
+    console.log(arti.id)
+    const listRef = refStorage(storage, arti.id)
+    // Find all the prefixes and items.
+    listAll(listRef).then((res) => {
+      if (res.items.length > 0) {
+        getDownloadURL(refStorage(storage, res.items[0].fullPath)).then((url) => {
         // `url` is the download URL for 'images/stars.jpg'
-        console.log(url)
-        contaCargarFoto.value++
-        arti.urlImagen = url
-        estanCompletasImagenes()
-        //console.log(url)
+          console.log(url)
+          contaCargarFoto.value++
+          arti.urlImagen = url
+          estanCompletasImagenes()
+        // console.log(url)
         }).catch((error) => {
-         console.log(error)
-        });
-      }else{
-      estanCompletasImagenes()
-      contaCargarFoto.value++
+          console.log(error)
+        })
+      } else {
+        estanCompletasImagenes()
+        contaCargarFoto.value++
       }
-    });
+    })
   })
 }
-function filtrarPrecio (){
-  hayFiltrosP.value=true
-  if(desde.value>0 && hasta.value>0){
-    articulos.value = articulos.value.filter((item)=>{
-      if(item.precio>=desde.value && item.precio<=hasta.value){
+function filtrarPrecio () {
+  hayFiltrosP.value = true
+  if (desde.value > 0 && hasta.value > 0) {
+    articulos.value = articulos.value.filter((item) => {
+      if (item.precio >= desde.value && item.precio <= hasta.value) {
         return true
-        }else{
-          return false
-          }
-      })
+      } else {
+        return false
+      }
+    })
   }
 }
-function cambioSelectOrdenar(value){
+function cambioSelectOrdenar (value) {
   console.log(value)
   ordenarpor.value = value.value
   ordenar()
 }
 const ordenar = () => {
-  if(ordenarpor.value ==='PRECIO'){
-    articulos.value.sort((a,b)=>a.precio - b.precio)
+  if (ordenarpor.value === 'PRECIO') {
+    articulos.value.sort((a, b) => a.precio - b.precio)
   }
-  if(ordenarpor.value ==='FECHA'){
-    articulos.value.sort((a,b)=>{
-      if(a.fecha < b.fecha){
+  if (ordenarpor.value === 'FECHA') {
+    articulos.value.sort((a, b) => {
+      if (a.fecha < b.fecha) {
         return -1
       }
-    if(a.fecha > b.fecha){
-      return 1
+      if (a.fecha > b.fecha) {
+        return 1
       }
-    return 0
+      return 0
     })
   }
 }
-function estanCompletasImagenes(){
+function estanCompletasImagenes () {
   console.log('estan completas')
-  if(contaCargarFoto.value===articuloriginal.value.length){
+  if (contaCargarFoto.value === articuloriginal.value.length) {
     console.log('si estan completas')
-    articulos.value = articuloriginal.value.map((a)=>{
+    articulos.value = articuloriginal.value.map((a) => {
       return { ...a }
-      })
-    }
+    })
   }
-  //ciclo de vida
-onMounted(()=>{
+}
+// ciclo de vida
+onMounted(() => {
   cargarDatosOriginales()
   ordenar()
-  fullHeight
-  })
+  /* fullHeight */
+})
 console.log(hayFiltro.value)
 </script>
 <style lang="scss">
