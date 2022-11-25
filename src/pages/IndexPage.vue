@@ -169,8 +169,8 @@
        <!--cartas con los articulos-->
         <div class="row">
           <!---->
-          <div class="col">
-            <q-card class="my-card q-pa-xs" v-for="(item,key) in articulos" :key="key">
+          <div class="col"  v-for="(item,key) in articulos" :key="key">
+            <q-card class="my-card q-pa-xs">
               <img :src="item.urlImagen">
               <q-separator black/>
               <q-card-section>
